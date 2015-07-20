@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.entities.FromPostBean;
 import com.minxing.client.app.AppAccount;
 import com.minxing.client.model.MxVerifyException;
+import com.minxing.client.ocu.Article;
+import com.minxing.client.ocu.ArticleMessage;
 import com.minxing.client.ocu.Message;
 import com.minxing.client.ocu.TextMessage;
 import com.minxing.client.organization.User;
@@ -96,7 +98,16 @@ public class CallbackServlet extends HttpServlet {
 				message.setContentType("application/json");
 			} else if ("google".equals(content)) {
 				// 响应公众号输入内容google
-				message.setContent("{\"article_count\":1,\"articles\":[{\"title\":\"谷歌地图新服务\",\"description\":\"谷歌地图服务Google Map的桌面升级版\",\"pic_url\":\"https://www.baidu.com/img/bd_logo1.png\",\"app_url\":\"\",\"url\":\"http://mobile.baidu.com/\"}]}");
+				ArticleMessage m = new ArticleMessage();
+				//消息标题,描述，消息图片地址,消息html5链接,消息native链接
+				Article a = new Article("建设有限责任公司2014年度工作总结暨2015", 
+						"摘要发展总结", 
+						"https://www.minxing365.com/logo.png", 
+						"/logo.png", 
+						null);
+				//最多支持4个
+				m.addArticle(a);
+				message.setContent(m.getBody());
 				message.setContentType("application/json");
 			} else if ("text".equals(eventkey)) {
 				//响应菜单内容为text的click类型的菜单

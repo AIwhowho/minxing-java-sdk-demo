@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.minxing.client.app.AppAccount;
 import com.minxing.client.organization.User;
 
-public class TestServlet extends HttpServlet {
+public class SSOServlet extends HttpServlet {
 
-	public TestServlet() {
+	public SSOServlet() {
 		super();
 	}
 
