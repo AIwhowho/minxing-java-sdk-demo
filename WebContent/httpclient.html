@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>httpclient demo</title>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<script src="js/jquery-2.1.0.js"></script>
+</head>
+<body>
+	<div id="commit">httpclient demo</div>
+有跨域问题，测试不通过
+	<script>
+		var url = "http://127.0.0.1:3000/oauth2/token";
+
+		$("#commit").on("click", function() {
+			$.post(url, {
+				data : {
+					grant_type : "password",
+					login_name : "zhangsan",
+					password : "111111",
+					app_id: 1,
+					app_secret: "b452b20818d463d13b8c8f50aa112e64"
+				},
+				success : function(data) {
+					if (data && data.resultcode == '200') {
+						console.log(data);
+					}
+				}
+			})
+		});
+	</script>
+</body>
+</html>

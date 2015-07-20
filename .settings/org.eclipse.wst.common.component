@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="minxing-java-sdk-demo">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/minxing_java_sdk"/>
+        <property name="java-output-path" value="/minxing-java-sdk-demo/build/classes"/>
+        <property name="context-root" value="minxing-java-sdk-demo"/>
+    </wb-module>
+</project-modules>

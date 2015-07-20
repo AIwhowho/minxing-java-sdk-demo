@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>敏行Html5 JSAPI测试</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://intg.dehuinet.com:8060/connect/mx_bridge.js"></script>
+        <script type="text/javascript">
+        //MXBridge.invoke("hideWebViewTitle");
+        //MXBridge.invoke("hideOptionMenu");
+        </script>
+    </head>
+    <style>
+    body {
+    background: #eee;
+    font-size: 1.2em;
+    }
+    .field input,.field input:focus {
+    background: #fff;
+    width: 100%;
+    border: none;
+    padding: .4em 0;
+    margin: 0;
+    display: block;
+    outline: 0 !important;
+    min-height: 1.4em;
+    line-height: 1.4em;
+    font-size: 16px;
+    -webkit-user-modify: read-write-plaintext-only ;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+    }
+    .field {
+    background-color: #fff;
+    border: 1px solid #aaaaaa;
+    color: #333333;
+    text-shadow: 0 1px 0 white;
+    -webkit-border-radius: 0.6em;
+    border-radius: 0.6em;
+    margin: .5em 0;
+    padding:0 .4em 0 .4em;
+    -webkit-background-clip: padding;
+    background-clip: padding-box;
+    width: 80%;
+    font-size: 1.2em;
+    }
+    .btn {
+    border: 1px solid #044062;
+    background: #396b9e;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 1px 0 #194b7e;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#5f9cc5), to(#396b9e));
+    background-image: -webkit-linear-gradient(#5f9cc5, #396b9e);
+    background-image: -moz-linear-gradient(#5f9cc5, #396b9e);
+    background-image: -ms-linear-gradient(#5f9cc5, #396b9e);
+    background-image: -o-linear-gradient(#5f9cc5, #396b9e);
+    background-image: linear-gradient(#5f9cc5, #396b9e);
+    width: 100%;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-size : 20px;
+    color : #ffffff;
+    background-color : #4b88b6;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    padding: 0.4em 0;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    text-decoration:none;
+    margin-bottom: 0.4em;
+    }
+    </style>
+    <body>
+        <div>
+            MXBridge.invoke("download",'url')
+            <input type="text" id="downloadurl" size=30 value="输入下载地址"><a onclick="clear_input('downloadurl')">清空</a>
+            <input type="button" class="btn" value="点击下载附件ppt" onclick="download1()" id="download1">
+        </div>
+        <div>
+            MXBridge.invoke("hideOptionMenu")
+            <input type="button" class="btn" value="隐藏右上角分享按钮" onclick="hideOptionMenu()" id="hideOptionMenu">
+        </div>
+        <div>
+            MXBridge.invoke("showOptionMenu")
+            <input type="button" class="btn" value="显示右上角分享按钮" onclick="showOptionMenu()" id="showOptionMenu">
+        </div>
+        <div>
+            MXBridge.invoke("hideWebViewTitle")
+            <input type="button" class="btn" value="隐藏页面上部标题栏" onclick="hideWebViewTitle()" id="hideWebViewTitle">
+        </div>
+        <div>
+            MXBridge.invoke("showWebViewTitle","该页面标题")
+            <input type="button" class="btn" value="显示页面上部标题栏" onclick="showWebViewTitle()" id="showWebViewTitle">
+        </div>
+        <div>
+            MXBridge.invoke("hideToolbar")
+            <input type="button" class="btn" value="隐藏页面下部工具栏" onclick="hideToolbar()" id="hideToolbar">
+        </div>
+        <div>
+            MXBridge.invoke("showToolbar")
+            <input type="button" class="btn" value="显示页面下部工具栏" onclick="showToolbar()" id="showToolbar">
+        </div>
+        <div>
+            MXBridge.invoke("closeWindow")
+            <input type="button" class="btn" value="关闭当前页面" onclick="closeWindow()" id="closeWindow">
+        </div>
+        <div>
+            MXBridge.invoke("selectUser",function(d){//获取返回的JSON结果})
+            <input type="button" class="btn" value="单选人员" onclick="selectUser()" id="selectUser">
+            <div style="color:green" id="selectUserResult"></div>
+        </div>
+        <div>
+            MXBridge.invoke("selectUsers",function(d){//获取返回的JSON结果})
+            <input type="button" class="btn" value="多选人员" onclick="selectUsers()" id="selectUsers">
+            <div style="color:green" id="selectUsersResult"></div>
+        </div>
+        <div>
+            MXBridge.invoke("chat","['login_name1','login_name2']")
+            <input type="text" id="login_name_chat" value="|分隔的多个login_name">
+            <a onclick="clear_input('login_name_chat')">清空</a>
+            <input type="button" class="btn" value="发起聊天会话" onclick="chat()" id="chat">
+        </div>
+        <div>
+            MXBridge.invoke("personInfo","实际的login_name",function(d){//获取返回的JSON结果})
+            <input type="text" id="login_name_personInfo" value="输入login_name">
+            <a onclick="clear_input('login_name_personInfo')">清空</a>
+            <input type="button" class="btn" value="获取人员信息" onclick="personInfo()" id="personInfo">
+            <div style="color:green" id="personInfoResult"></div>
+        </div>
+        <div>
+            MXBridge.invoke("viewPersonInfo","实际的login_name")
+            <input type="text" id="login_name_viewPersonInfo"  value="输入login_name">
+            <a onclick="clear_input('login_name_viewPersonInfo')">清空</a>
+            <input type="button" class="btn" value="查看人员信息" onclick="viewPersonInfo()" id="viewPersonInfo">
+        </div>
+        <div>
+            MXBridge.invoke("currentUser",function(d){//获取返回的JSON结果})
+            <input type="button" class="btn" value="当前用户信息" onclick="currentUser()" id="currentUser">
+            <div style="color:green" id="currentUserResult"></div>
+        </div>
+        <div>
+            var p;<br>
+            if (navigator.userAgent.match(/Android/)) {<br>
+                p = {"androidData":"com.tencent.mm://com.tencent.mm.ui.LauncherUI&a=a&b=b","installUrl":"http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&t=weixin_download_method&sys=android&loc=weixin,android,web,0"};<br>
+            }else if (navigator.userAgent.match(/iPhone/) || navigator.userAgent.match(/iPod/) ){<br>
+                p = {"iosScheme":"weixin://?a=a&b=b","iosDownloadUrl":"http://itunes.apple.com/cn/app/id414478124"};<br>
+            }<br><br>
+            MXBridge.invoke("launchApp",p);
+            <input type="button" class="btn" value="启动第三方APP" onclick="launchApp()" id="launchApp">
+        </div>
+        <div>
+            MXBridge.invoke("disableBackKey")
+            <input type="button" class="btn" value="禁用android back键" onclick="disableBackKey()" id="disableBackKey">
+        </div>
+        <div>
+            <input type="button" class="btn" value="设置cookie" onclick="setCookieValue()" id="setCookieValue">
+            <input type="button" class="btn" value="显示cookie" onclick="showCookieValue()" id="showCookieValue">
+            <div id="cookievalue"></div>
+        </div>
+    </body>
+    <script>
+    _={
+        get:function (id) {
+            return document.getElementById(id).value;
+        }
+    };
+    _$={
+        get:function (id) {
+            return document.getElementById(id);
+        }
+    };
+    function clear_input(id){
+        _$.get(id).value='';
+    }
+    function hideOptionMenu () {
+        MXBridge.invoke("hideOptionMenu");
+    }
+    function showOptionMenu () {
+        MXBridge.invoke("showOptionMenu");
+    }
+    function hideWebViewTitle () {
+        MXBridge.invoke("hideWebViewTitle");
+    }
+    function showWebViewTitle () {
+        MXBridge.invoke("showWebViewTitle","页面标题名称");
+    }
+    function hideToolbar () {
+        MXBridge.invoke("hideToolbar");
+    }
+    function showToolbar () {
+        MXBridge.invoke("showToolbar");
+    }
+    function closeWindow () {
+        MXBridge.invoke("closeWindow");
+    }
+    function selectUser () {
+        MXBridge.invoke("selectUser",function(result){
+            _$.get("selectUserResult").innerHTML=JSON.stringify(result);
+        });
+    }
+    function selectUsers () {
+        MXBridge.invoke("selectUsers",function(result){
+            _$.get("selectUsersResult").innerHTML=JSON.stringify(result);
+        });
+    }
+    function chat () {
+        var v = _.get("login_name_chat").split("|");
+        MXBridge.invoke("chat",v);
+    }
+    function personInfo () {
+        //login_name
+        var v = _.get("login_name_personInfo");
+        MXBridge.invoke("personInfo",v,function(result){
+            _$.get("personInfoResult").innerHTML=JSON.stringify(result);
+        });
+    }
+    function viewPersonInfo () {
+        //login_name
+        var v = _.get("login_name_viewPersonInfo")
+        MXBridge.invoke("viewPersonInfo",v);
+    }
+    function currentUser () {
+        MXBridge.invoke("currentUser",function(result){
+            _$.get("currentUserResult").innerHTML=JSON.stringify(result);
+        });
+    }
+    function launchApp () {
+        var p;
+        if (navigator.userAgent.match(/Android/)) {
+            p = {"androidLancher":"com.tencent.mm://com.tencent.mm.ui.LauncherUI","androidInstallUrl":"http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&t=weixin_download_method&sys=android&loc=weixin,android,web,0"};
+        }else if (navigator.userAgent.match(/iPhone/) || navigator.userAgent.match(/iPod/) ){
+            p = {"iosScheme":"weixin://?a=a&b=b","iosDownloadUrl":"http://itunes.apple.com/cn/app/id414478124"};
+        }
+        
+        MXBridge.invoke("launchApp",p);
+    }
+    function disableBackKey(){
+        MXBridge.invoke("disableBackKey");
+    }
+    http://intg.dehuinet.com:8060/apps_file/iOS.ipa
+    function download1(){
+        var v = _.get("downloadurl")
+        MXBridge.invoke("download",v);
+    }
+    function download2(){
+        MXBridge.invoke("download","http://intg.dehuinet.com:8060/apps_file/iOS.ipa");
+    }
+    function download3(){
+        MXBridge.invoke("download","http://192.168.100.77:8080/mx-test4dev/download");
+    }
+    function showCookieValue(){
+        _$.get("cookievalue").innerHTML = document.cookie;
+    }
+    function setCookieValue(){
+        setCookie("test","testvalue",4);
+    }
+    function setCookie(c_name,value,expiredays)
+    {
+    var exdate=new Date()
+    exdate.setDate(exdate.getDate()+expiredays)
+    document.cookie=c_name+ "=" +escape(value)+
+    ((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+    }
+    </script>
+
+</html>
