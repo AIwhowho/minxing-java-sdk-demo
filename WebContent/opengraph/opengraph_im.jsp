@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -65,8 +66,8 @@ MX.onGraphLoad({
 		function(mc){
 		     MX.initIM({
 		        ssoKey:"login_name",
-		        width:"300px",
-		        height:"400px"
+		        width:"300",
+		        height:"400"
 	     })
  })
 </script>

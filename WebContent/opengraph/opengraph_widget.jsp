@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -68,7 +69,8 @@ MX.onGraphLoad(
 	            placement:"right",
 	            style:"https://www.minxing365.com/connect/images/chat.png"
 	         },
-	         height:"400px",
+	         height:"400",
+	         width:"400",
 	         type:"conversations_graph",   //conversations_graph 即时通讯；  graph:工作圈
 	         config:{
 	               promptText: "跟你同事说点啥"

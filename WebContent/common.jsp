@@ -10,5 +10,5 @@ var  url = localStorage.url;
 var  thirdurl = localStorage.thirdurl;
 
 var mx_loader = "/connect/mx_loader.js";
-document.write('<script src="' + url + mx_loader +'" data-app-id="3" data-network="' + network + '"><' + '/script>');
+document.write('<script src="' + url + mx_loader +'" data-client-id="3" data-network="' + network + '"><' + '/script>');
 </script>
