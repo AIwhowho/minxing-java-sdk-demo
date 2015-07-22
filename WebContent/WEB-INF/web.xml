@@ -9,12 +9,12 @@
     <url-pattern>/callback</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>test</servlet-name>
-    <servlet-class>com.callback.TestServlet</servlet-class>
+    <servlet-name>sso</servlet-name>
+    <servlet-class>com.callback.SSOServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>test</servlet-name>
-    <url-pattern>/test</url-pattern>
+    <servlet-name>sso</servlet-name>
+    <url-pattern>/sso</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

@@ -2,14 +2,10 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>敏行Html5 JSAPI测试</title>
+        <title>敏行V5 Html5 JSAPI测试</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="http://intg.dehuinet.com:8060/connect/mx_bridge.js"></script>
-        <script type="text/javascript">
-        //MXBridge.invoke("hideWebViewTitle");
-        //MXBridge.invoke("hideOptionMenu");
-        </script>
     </head>
+    <script type="text/javascript" src="cordova.js"></script>
     <style>
     body {
     background: #eee;
@@ -45,16 +41,16 @@
     }
     .btn {
     border: 1px solid #044062;
-    background: #396b9e;
+    background: #8B2500;
     font-weight: bold;
     color: white;
     text-shadow: 0 1px 0 #194b7e;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#5f9cc5), to(#396b9e));
-    background-image: -webkit-linear-gradient(#5f9cc5, #396b9e);
-    background-image: -moz-linear-gradient(#5f9cc5, #396b9e);
-    background-image: -ms-linear-gradient(#5f9cc5, #396b9e);
-    background-image: -o-linear-gradient(#5f9cc5, #396b9e);
-    background-image: linear-gradient(#5f9cc5, #396b9e);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#5f9cc5), to(#8B2500));
+    background-image: -webkit-linear-gradient(#5f9cc5, #8B2500);
+    background-image: -moz-linear-gradient(#5f9cc5, #8B2500);
+    background-image: -ms-linear-gradient(#5f9cc5, #8B2500);
+    background-image: -o-linear-gradient(#5f9cc5, #8B2500);
+    background-image: linear-gradient(#5f9cc5, #8B2500);
     width: 100%;
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -70,88 +66,133 @@
     text-decoration:none;
     margin-bottom: 0.4em;
     }
+    input {
+
+    }
     </style>
     <body>
         <div>
-            MXBridge.invoke("download",'url')
-            <input type="text" id="downloadurl" size=30 value="输入下载地址"><a onclick="clear_input('downloadurl')">清空</a>
-            <input type="button" class="btn" value="点击下载附件ppt" onclick="download1()" id="download1">
+            MXCommon.download('url')
+            <input type="text" id="downloadurl" size=30 value="http://intg.dehuinet.com:8060/clients_file/2.apk"><a onclick="clear_input('downloadurl')">清空</a>
+            <input type="button" class="btn" value="点击下载附件" onclick="download1()" id="download1">
         </div>
         <div>
-            MXBridge.invoke("hideOptionMenu")
+            MXWebui.hideOptionMenu();
             <input type="button" class="btn" value="隐藏右上角分享按钮" onclick="hideOptionMenu()" id="hideOptionMenu">
         </div>
         <div>
-            MXBridge.invoke("showOptionMenu")
+            MXWebui.showOptionMenu()
             <input type="button" class="btn" value="显示右上角分享按钮" onclick="showOptionMenu()" id="showOptionMenu">
         </div>
         <div>
-            MXBridge.invoke("hideWebViewTitle")
+            MXWebui.hideWebViewTitle()
             <input type="button" class="btn" value="隐藏页面上部标题栏" onclick="hideWebViewTitle()" id="hideWebViewTitle">
         </div>
         <div>
-            MXBridge.invoke("showWebViewTitle","该页面标题")
+            MXWebui.showWebViewTitle("---该页面标题---")
             <input type="button" class="btn" value="显示页面上部标题栏" onclick="showWebViewTitle()" id="showWebViewTitle">
         </div>
         <div>
-            MXBridge.invoke("hideToolbar")
+            MXWebui.hideToolbar()
             <input type="button" class="btn" value="隐藏页面下部工具栏" onclick="hideToolbar()" id="hideToolbar">
         </div>
         <div>
-            MXBridge.invoke("showToolbar")
+            MXWebui.showToolbar()
             <input type="button" class="btn" value="显示页面下部工具栏" onclick="showToolbar()" id="showToolbar">
         </div>
         <div>
-            MXBridge.invoke("closeWindow")
+            MXWebui.closeWindow()
             <input type="button" class="btn" value="关闭当前页面" onclick="closeWindow()" id="closeWindow">
         </div>
         <div>
-            MXBridge.invoke("selectUser",function(d){//获取返回的JSON结果})
+            MXWebui.disableBackKey()
+            <input type="button" class="btn" value="禁用android back键" onclick="disableBackKey()" id="disableBackKey">
+        </div>
+        <div>
+            MXContacts.selectUser(function(d){//获取返回的JSON结果},isDepSelectEnable)
+            开启可以选中部门
+            <input type="checkbox" name="isDepSelectEnable" id="isDep">
             <input type="button" class="btn" value="单选人员" onclick="selectUser()" id="selectUser">
             <div style="color:green" id="selectUserResult"></div>
         </div>
         <div>
-            MXBridge.invoke("selectUsers",function(d){//获取返回的JSON结果})
+            MXContacts.selectUsers(function(d){//获取返回的JSON结果},isDepSelectEnable)
+            开启可以选中部门
+            <input type="checkbox" name="isDepSelectEnableMulti" id="isDepMulti">
             <input type="button" class="btn" value="多选人员" onclick="selectUsers()" id="selectUsers">
             <div style="color:green" id="selectUsersResult"></div>
         </div>
         <div>
-            MXBridge.invoke("chat","['login_name1','login_name2']")
+            MXChat.chat("['login_name1','login_name2']",function(){})
             <input type="text" id="login_name_chat" value="|分隔的多个login_name">
             <a onclick="clear_input('login_name_chat')">清空</a>
             <input type="button" class="btn" value="发起聊天会话" onclick="chat()" id="chat">
         </div>
         <div>
-            MXBridge.invoke("personInfo","实际的login_name",function(d){//获取返回的JSON结果})
+            MXChat.deleteMsg("messageid",function(){})
+            <input type="text" id="messageid" value="消息id">
+            <input type="button" class="btn" value="删除消息" onclick="deleteMsg()" id="chat">
+        </div>
+        <div>
+            MXCommon.api({'method':'get','url':'/api/***','params':'a=a&b=b','headers':'h=ha'}, function(d){//获取返回的JSON结果})
+            <input type="text"  id="apimethod" value="get">
+            <input type="text"  id="apiurl" value="/api/v1/departments/3">
+            <input type="text"  id="apiparams" value="a=a&b=b">
+            <input type="text"  id="apiheaders" value="h=ha">
+            <a onclick="clear_input('input_api')">清空</a>
+            <input type="button" class="btn" value="发起API请求" onclick="api()" id="api">
+            <div style="color:green" id="apiResult"></div>
+        </div>
+        <div>
+            MXCommon.getPersonInfo("实际的login_name",function(d){//获取返回的JSON结果})
             <input type="text" id="login_name_personInfo" value="输入login_name">
             <a onclick="clear_input('login_name_personInfo')">清空</a>
             <input type="button" class="btn" value="获取人员信息" onclick="personInfo()" id="personInfo">
             <div style="color:green" id="personInfoResult"></div>
         </div>
         <div>
-            MXBridge.invoke("viewPersonInfo","实际的login_name")
+            MXCommon.viewPersonInfo("实际的login_name")
             <input type="text" id="login_name_viewPersonInfo"  value="输入login_name">
             <a onclick="clear_input('login_name_viewPersonInfo')">清空</a>
             <input type="button" class="btn" value="查看人员信息" onclick="viewPersonInfo()" id="viewPersonInfo">
         </div>
         <div>
-            MXBridge.invoke("currentUser",function(d){//获取返回的JSON结果})
+            MXCommon.getCurrentUser(function(d){//获取返回的JSON结果})
             <input type="button" class="btn" value="当前用户信息" onclick="currentUser()" id="currentUser">
             <div style="color:green" id="currentUserResult"></div>
         </div>
         <div>
-            var p;<br>
-            if (navigator.userAgent.match(/Android/)) {<br>
-                p = {"androidData":"com.tencent.mm://com.tencent.mm.ui.LauncherUI&a=a&b=b","installUrl":"http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&t=weixin_download_method&sys=android&loc=weixin,android,web,0"};<br>
-            }else if (navigator.userAgent.match(/iPhone/) || navigator.userAgent.match(/iPod/) ){<br>
-                p = {"iosScheme":"weixin://?a=a&b=b","iosDownloadUrl":"http://itunes.apple.com/cn/app/id414478124"};<br>
-            }<br><br>
-            MXBridge.invoke("launchApp",p);
-            <input type="button" class="btn" value="启动第三方APP" onclick="launchApp()" id="launchApp">
+            MXCommon.getSSOToken("appid")
+            <input type="text" id="appid"  value="输入appid">
+            <input type="button" class="btn" value="获取ssotoken" onclick="getSSOToken()" id="getSSOToken">
+            <div style="color:green" id="SSOTokenResult"></div>
         </div>
         <div>
-            MXBridge.invoke("disableBackKey")
-            <input type="button" class="btn" value="禁用android back键" onclick="disableBackKey()" id="disableBackKey">
+            MXCommon.getServerUrl()
+            <input type="button" class="btn" value="获取serverurl" onclick="getServerUrl()" id="getServerUrl">
+            <div style="color:green" id="serverurlresult"></div>
+        </div>
+        <div>
+            分享消息、创建opengraph共用字段：
+            <input type="text" id="title"  value="输入title">
+            <input type="text" id="thumbnail"  value="输入缩略图地址">
+            <input type="text" id="url"  value="输入url">
+            <input type="text" id="appUrl"  value="输入appUrl">
+            <input type="text" id="desc"  value="输入desc">
+            <input type="text" id="source_id"  value="输入source_id">
+            <input type="text" id="source_type"  value="输入ocu或app">
+            <br>
+            分享消息sharelink内容<br>
+            MXShare.shareToChat({'title':'Title','image_url':'thumbnail', 'url':'url', 'app_url':'appUrl', 'description':'desc', 'source_id':'notification','source_type':'ocu||app'})
+            <input type="button" class="btn" value="sharelink到敏信会话" onclick="shareToChat()" id="shareToChat">
+             MXShare.shareToCircle({'title':'Title','image_url':'thumbnail', 'url':'url', 'app_url':'appUrl', 'description':'desc', 'source_id':'notification','source_type':'ocu||app'})
+            <input type="button" class="btn" value="sharelink到工作圈" onclick="shareToCircle()" id="shareToCircle">
+            创建opengraph到会话聊天
+            <br>
+            MxChat.createGraph({'title':'Title','image_url':'thumbnail', 'url':'url', 'app_url':'appUrl', 'description':'desc', 'uids':['loginname', 'loginname']})
+            <input type="text" id="uid1"  value="输入用户loginname">
+            <input type="text" id="uid2"  value="输入用户loginname">
+            <input type="button" class="btn" value="发送opengraph" onclick="createGraph()" id="createGraph">
         </div>
         <div>
             <input type="button" class="btn" value="设置cookie" onclick="setCookieValue()" id="setCookieValue">
@@ -174,54 +215,114 @@
         _$.get(id).value='';
     }
     function hideOptionMenu () {
-        MXBridge.invoke("hideOptionMenu");
+        MXWebui.hideOptionMenu();;
     }
     function showOptionMenu () {
-        MXBridge.invoke("showOptionMenu");
+         MXWebui.showOptionMenu();
     }
     function hideWebViewTitle () {
-        MXBridge.invoke("hideWebViewTitle");
+        MXWebui.hideWebViewTitle();
     }
     function showWebViewTitle () {
-        MXBridge.invoke("showWebViewTitle","页面标题名称");
+        MXWebui.showWebViewTitle("页面标题名称");
     }
     function hideToolbar () {
-        MXBridge.invoke("hideToolbar");
+        MXWebui.hideToolbar();
     }
     function showToolbar () {
-        MXBridge.invoke("showToolbar");
+        MXWebui.showToolbar();
     }
     function closeWindow () {
-        MXBridge.invoke("closeWindow");
+        MXWebui.closeWindow();
+    }
+    function disableBackKey(){
+        MXWebui.disableBackKey();
     }
     function selectUser () {
-        MXBridge.invoke("selectUser",function(result){
+        MXContacts.selectUser(function(result){
             _$.get("selectUserResult").innerHTML=JSON.stringify(result);
-        });
+        },_$.get("isDep").checked);
     }
     function selectUsers () {
-        MXBridge.invoke("selectUsers",function(result){
+        MXContacts.selectUsers(function(result){
             _$.get("selectUsersResult").innerHTML=JSON.stringify(result);
-        });
+        },_$.get("isDepMulti").checked);
     }
     function chat () {
         var v = _.get("login_name_chat").split("|");
-        MXBridge.invoke("chat",v);
+        MXChat.chat(v);
+    }
+    function deleteMsg () {
+        var v = _.get("messageid");
+        MXChat.deleteMsg(v,function(result){
+            alert("ok");
+        });
+    }
+    function getSSOToken () {
+        var v = _.get("appid");
+        MXCommon.getSSOToken(v
+            ,function(result){
+            _$.get("SSOTokenResult").innerHTML=result;
+        });
+    }
+    function getServerUrl () {
+        MXCommon.getServerUrl(function(result){
+            _$.get("serverurlresult").innerHTML=result;
+        });
+    }
+    function api () {
+        var method = _.get("apimethod")
+        var url = _.get("apiurl")
+        var params = _.get("apiparams")
+        var headers = _.get("apiheaders")
+        MXCommon.api({'method':method,'url':url,'params':params,'headers':headers},function(result){
+            _$.get("apiResult").innerHTML=JSON.stringify(result);
+        });
     }
     function personInfo () {
-        //login_name
         var v = _.get("login_name_personInfo");
-        MXBridge.invoke("personInfo",v,function(result){
+        MXCommon.getPersonInfo(v,function(result){
             _$.get("personInfoResult").innerHTML=JSON.stringify(result);
         });
     }
     function viewPersonInfo () {
-        //login_name
         var v = _.get("login_name_viewPersonInfo")
-        MXBridge.invoke("viewPersonInfo",v);
+        MXCommon.viewPersonInfo(v);
     }
+    
+    function shareToChat () {
+        var title = _.get("title")
+        var thumbnail = _.get("thumbnail")
+        var url = _.get("url")
+        var appUrl = _.get("appUrl")
+        var desc = _.get("desc")
+        var source_id = _.get("source_id")
+        var source_type = _.get("source_type")
+        MXShare.shareToChat({'title':title,'thumbnail':thumbnail, 'url':url, 'appUrl':appUrl, 'desc':desc, 'source_id':source_id, 'source_type':source_type})
+    }
+    function shareToCircle () {
+        var title = _.get("title")
+        var thumbnail = _.get("thumbnail")
+        var url = _.get("url")
+        var appUrl = _.get("appUrl")
+        var desc = _.get("desc")
+        var source_id = _.get("source_id")
+        var source_type = _.get("source_type")
+        MXShare.shareToCircle({'title':title,'thumbnail':thumbnail, 'url':url, 'appUrl':appUrl, 'desc':desc, 'source_id':source_id, 'source_type':source_type})
+    }
+    function createGraph () {
+        var title = _.get("title")
+        var thumbnail = _.get("thumbnail")
+        var url = _.get("url")
+        var appUrl = _.get("appUrl")
+        var desc = _.get("desc")
+        var uid1 = _.get("uid1")
+        var uid2 = _.get("uid2")
+        MXChat.createGraph({'title':title,'image_url':thumbnail, 'url':url, 'app_url':appUrl, 'description':desc,  'uids':[uid1,uid2]})
+    }
+    
     function currentUser () {
-        MXBridge.invoke("currentUser",function(result){
+        MXCommon.getCurrentUser(function(result){
             _$.get("currentUserResult").innerHTML=JSON.stringify(result);
         });
     }
@@ -235,19 +336,16 @@
         
         MXBridge.invoke("launchApp",p);
     }
-    function disableBackKey(){
-        MXBridge.invoke("disableBackKey");
-    }
-    http://intg.dehuinet.com:8060/apps_file/iOS.ipa
+    
     function download1(){
         var v = _.get("downloadurl")
-        MXBridge.invoke("download",v);
+        MXCommon.download(v);
     }
     function download2(){
-        MXBridge.invoke("download","http://intg.dehuinet.com:8060/apps_file/iOS.ipa");
+        MXCommon.download("http://intg.dehuinet.com:8060/clients_file/iOS.ipa");
     }
     function download3(){
-        MXBridge.invoke("download","http://192.168.100.77:8080/mx-test4dev/download");
+        MXCommon.download("http://192.168.100.77:8080/mx-test4dev/download");
     }
     function showCookieValue(){
         _$.get("cookievalue").innerHTML = document.cookie;
