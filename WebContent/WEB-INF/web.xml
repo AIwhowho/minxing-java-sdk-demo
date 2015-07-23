@@ -8,14 +8,25 @@
     <servlet-name>callback</servlet-name>
     <url-pattern>/callback</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <servlet-name>sso</servlet-name>
-    <servlet-class>com.callback.SSOServlet</servlet-class>
+    <servlet-name>ocusso</servlet-name>
+    <servlet-class>com.callback.OcuSSOServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>sso</servlet-name>
-    <url-pattern>/sso</url-pattern>
+    <servlet-name>ocusso</servlet-name>
+    <url-pattern>/ocusso</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>html5sso</servlet-name>
+    <servlet-class>com.callback.Html5SSOServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>html5sso</servlet-name>
+    <url-pattern>/html5sso</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

@@ -1,6 +1,7 @@
 # minxing-java-sdk-demo
 sso方面参考：
-com.callback.SSOServlet
+com.callback.OcuSSOServlet
+com.callback.Html5SSOServlet
 
 推送消息参考：
 com.push.*
