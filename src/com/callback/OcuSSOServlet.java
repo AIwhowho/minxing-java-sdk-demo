@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.minxing.client.app.AppAccount;
+import com.minxing.client.json.JSONObject;
+import com.minxing.client.organization.Department;
 import com.minxing.client.organization.User;
 
 public class OcuSSOServlet extends HttpServlet {
@@ -41,11 +43,12 @@ public class OcuSSOServlet extends HttpServlet {
 			if(mx_sso_token!=null){
 				System.out.println("验证签名信息通过，获取到得mx_sso_token        ="+mx_sso_token);
 				User user=oa.verifyOcuSSOToken(mx_sso_token, ocu_id);
+				Department[] d = user.getAllDepartments();//获取到当前用户的部门
 				System.out.println("获取到用户的信息="+user);
 			}else{
 				System.out.println("验证签名信息失败");
 			}
-			
+			JSONObject o = oa.get("/api/v1/users/current", null);
 			
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter pw = response.getWriter();

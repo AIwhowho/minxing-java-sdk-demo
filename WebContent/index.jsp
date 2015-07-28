@@ -52,6 +52,9 @@
 		}else{
 			alert("该浏览器不支持localStorage,请使用chrome测试！");
 		}
+		
+		/* var data={"access_token":"ABIAAAAAAAAA4YlBCdLGW-5hiEpvjjMw3EIPWD80uHTm0HuUjTttnAc=","code":0,"network_id":304};
+		MX.Login._onLoginBack(data); */
 	})
 </script>
 </head>
@@ -73,6 +76,7 @@ opengraph图片:<input name="imageurl" id="imageurl" value="https://www.minxing3
 <a href="opengraph/opengraph_frame.jsp">opengraph_frame.jsp test</a>
 <br><a href="opengraph/opengraph_widget.jsp">opengraph_widget.jsp test</a>
 <br><a href="opengraph/opengraph_im.jsp">opengraph_im.jsp test</a>
+<br><a href="opengraph/opengraph_widget_demo.html">opengraph_widget_demo.html test</a>
 <form>
 <!-- 
 <h2>消息流测试</h2>
