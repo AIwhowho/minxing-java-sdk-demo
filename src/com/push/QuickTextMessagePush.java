@@ -11,7 +11,9 @@ public class QuickTextMessagePush {
 		Message m = new TextMessage(body);
 		//管理员或者社区管理员创建接入端，获取到access_token，
 		String access_token="59p68NMCUftkkeiXAz9Pj4wpjB7umUSzFyPbQUHsxcHPibuf";
-		AppAccount account = AppAccount.loginByAccessToken("http://intg.dehuinet.com:8060",access_token);
+		//敏行服务器实际地址
+		String mx_server_url="http://intg.dehuinet.com:8060";
+		AppAccount account = AppAccount.loginByAccessToken(mx_server_url,access_token);
 		String[] toUserIds = new String[] {"1081"};//loginname
 		String ocuId = "80917071fe3d6ef27d3e0f73fa5e1580";
 		String ocuSecret = "5deb243248901b0d0f8275ddf6462f7e";
