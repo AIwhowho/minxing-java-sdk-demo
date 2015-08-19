@@ -49,12 +49,11 @@ public class CallbackServlet extends HttpServlet {
 
 		
 		InputStream in = request.getInputStream();
-		String app_access_token="59p68NMCUftkkeiXAz9Pj4wpjB7umUSzFyPbQUHsxcHPibuf";
+		String access_token="59p68NMCUftkkeiXAz9Pj4wpjB7umUSzFyPbQUHsxcHPibuf";
 		String ocuId="80917071fe3d6ef27d3e0f73fa5e1580";
 		String ocuSecret="5deb243248901b0d0f8275ddf6462f7e";
-		AppAccount oa=AppAccount.loginByAccessToken("http://intg.dehuinet.com:8060", app_access_token);
-		oa.setDisabledCookie(true);
-		String mx_sso_token = oa.checkSignature(request, ocuId, ocuSecret);
+		AppAccount oa=AppAccount.loginByAccessToken("http://intg.dehuinet.com:8060", access_token);
+		String mx_sso_token = request.getParameter("mx_sso_token");
 		if(mx_sso_token!=null){
 			System.out.println("验证签名信息通过，获取到得mx_sso_token        ="+mx_sso_token);
 			User user=null;

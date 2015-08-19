@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script src="https://www.minxing365.com/connect/mx_loader.js" data-client-id="3" data-network="ecinc.com.cn"></script>
-<script src="https://www.minxing365.com/connect/sso_login?mx_sso_token=ABIAAAAAAAAA4YlBCdLGW-5hiEpvjjMw3EIPWD80uHTm0HuUjTttnAc="></script>
+<script src="https://www.minxing365.com/connect/sso_login?mx_sso_token=ABIAAAAAAAAA4YlBCdLGW-5hiEpvjjMw3EIPWD80uHTm0HuUjTttnAc=&type=script" ></script>
 
 
 </head>
@@ -47,41 +47,22 @@
 <div id="feed_container"></div>
 
 <script>
-var  ocuId = "d65c91db539664add2a2760034ae8c5f";
-var  thirdurl = "https://www.baidu.com";
-var  imageurl = "https://www.baidu.com/img/bdlogo.png";
-//所有关于openGrap的请求，都需要在该回调中运行
-MX.onGraphLoad(
-	{   
-	    objectProperties:{
-			url: thirdurl + "?type=widget",
-		    type:  "page",
-		    title: "敏行培训对象widget",
-		    image: imageurl
-	    },
-		ocuId:ocuId
-	},
-	function(mc){
-		
-	    //悬浮敏信widget
-	    MX.embedGraph({
-	        container:{
-	            placement:"right",
-	            style:"https://www.minxing365.com/connect/images/chat.png"
-	         },
-	         height:"400",
-	         width:"400",
-	         type:"conversations_graph",   //conversations_graph 即时通讯；  graph:工作圈
-	         config:{
-	               promptText: "跟你同事说点啥"
-	         }
-	    });
-	}
-);
-
+//悬浮敏信widget
+MX.embedGraph({
+    container:{
+        placement:"right",
+        style:"https://www.minxing365.com/connect/images/chat.png"
+     },
+     height:"400",
+     width:"400",
+     type:"conversations",   //conversations_graph 即时通讯；  graph:工作圈
+     config:{
+           promptText: "跟你同事说点啥"
+     }
+});
 MX.on("fresh_message",function(num){
-	console.log("fresh_message 11111111111111111");
-	console.log(num);
+	/* console.log("fresh_message 11111111111111111");
+	console.log(num); */
 	   //num 这是当前消息流中的未读消息树
 	});
 	 
