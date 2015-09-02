@@ -92,8 +92,7 @@ public class TestAppSyncAccount {
 			User user = new User();
 			// user.setLogin_name(String.valueOf(9000+(10-i)));
 			user.setName("user" + (i + 5));
-			// 更新用户首选是根据email 或者 login_name 的值作为查找指定用户的关键字
-			// 其次是emp_code或者cellvoice1 最后是id
+			// 更新用户,login_name 的值作为查找指定用户的关键字
 			user.setEmail("user" + i + "@" + networkName);
 			user.setPassword("222222");
 			// user.setCellvoice2("1");
@@ -225,8 +224,7 @@ public class TestAppSyncAccount {
 				User user = new User();
 				// user.setLogin_name(String.valueOf(9000+(10-i)));
 				user.setName("user000" + i);
-				// 更新用户首选是根据email 或者 login_name 的值作为查找指定用户的关键字
-				// 其次是emp_code或者cellvoice1 最后是id
+				// 更新用户   login_name 的值作为查找指定用户的关键字
 				user.setEmail("user000" + i + "@" + networkName);
 				user.setPassword("222222");
 				user.setTitle("经理1");
