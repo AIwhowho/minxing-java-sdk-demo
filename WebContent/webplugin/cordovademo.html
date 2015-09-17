@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Capture Photo</title>
+
+    <script type="text/javascript" charset="utf-8">
+
+    var pictureSource;  //设定图片来源
+    var destinationType; //选择返回数据的格式
+
+    document.addEventListener("deviceready",onDeviceReady,false);
+
+    // Cordova准备好了可以使用了
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+
+    function onPhotoDataSuccess(imageData) {
+      // base64 encoded image data
+      var smallImage = document.getElementById('smallImage');
+
+      smallImage.style.display = 'block';
+	  //在使用base64编码的时候需要使用这样的前缀
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+      // image file URI 
+      var largeImage = document.getElementById('largeImage');
+      largeImage.style.display = 'block';
+	  //使用image file URI 直接赋值就可以了
+	  alert(imageURI);
+	  alert(largeImage);
+      largeImage.src = imageURI;
+    }
+
+    // 第一个按钮调用函数
+    function capturePhoto() {
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+        destinationType: destinationType.DATA_URL });
+    }
+
+	//第二个按钮调用的函数
+    function capturePhotoEdit() {
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+        destinationType: destinationType.DATA_URL });
+    }
+
+    //第三/四个按钮调用的函数
+    function getPhoto(source) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
+    window.onerror=testError;   
+
+    function testError(){   
+
+	    arglen=arguments.length;
+
+	    var errorMsg="参数个数："+arglen+"个";   
+
+	    for(var i=0;i<arglen;i++){   
+
+	    	errorMsg+="\n参数"+(i+1)+"："+arguments[i];   
+
+		}   
+
+	    alert(errorMsg);   
+
+	    window.onerror=null;   
+
+	    return true;  
+
+	}
+    </script>
+  </head>
+  <body>
+    <button onclick="capturePhoto();">Capture Photo</button> <br>
+    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
+    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <img style="display:none;" id="largeImage" src="" />
+  </body>
+</html>

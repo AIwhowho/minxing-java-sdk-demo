@@ -10,6 +10,15 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>menu</servlet-name>
+    <servlet-class>com.callback.MenuResponseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>menu</servlet-name>
+    <url-pattern>/menu</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>ocusso</servlet-name>
     <servlet-class>com.callback.OcuSSOServlet</servlet-class>
   </servlet>

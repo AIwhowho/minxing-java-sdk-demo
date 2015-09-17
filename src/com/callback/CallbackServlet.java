@@ -49,24 +49,24 @@ public class CallbackServlet extends HttpServlet {
 
 		
 		InputStream in = request.getInputStream();
-		String access_token="59p68NMCUftkkeiXAz9Pj4wpjB7umUSzFyPbQUHsxcHPibuf";
-		String ocuId="80917071fe3d6ef27d3e0f73fa5e1580";
-		String ocuSecret="5deb243248901b0d0f8275ddf6462f7e";
-		AppAccount oa=AppAccount.loginByAccessToken("http://intg.dehuinet.com:8060", access_token);
-		String mx_sso_token = request.getParameter("mx_sso_token");
-		if(mx_sso_token!=null){
-			System.out.println("验证签名信息通过，获取到得mx_sso_token        ="+mx_sso_token);
-			User user=null;
-			try {
-				user = oa.verifyOcuSSOToken(mx_sso_token, ocuId);
-			} catch (MxVerifyException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println("获取到用户的信息="+user);
-		}else{
-			System.out.println("验证签名信息失败");
-		}
+//		String access_token="59p68NMCUftkkeiXAz9Pj4wpjB7umUSzFyPbQUHsxcHPibuf";
+//		String ocuId="80917071fe3d6ef27d3e0f73fa5e1580";
+//		String ocuSecret="5deb243248901b0d0f8275ddf6462f7e";
+//		AppAccount oa=AppAccount.loginByAccessToken("http://intg.dehuinet.com:8060", access_token);
+//		String mx_sso_token = request.getParameter("mx_sso_token");
+//		if(mx_sso_token!=null){
+//			System.out.println("验证签名信息通过，获取到得mx_sso_token        ="+mx_sso_token);
+//			User user=null;
+//			try {
+//				user = oa.verifyOcuSSOToken(mx_sso_token, ocuId);
+//			} catch (MxVerifyException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			System.out.println("获取到用户的信息="+user);
+//		}else{
+//			System.out.println("验证签名信息失败");
+//		}
 		FromPostBean frompostbean = Util.getFromPostBean(in);
 		System.out.println(frompostbean.toString());
 		String eventkey = frompostbean.EventKey;
@@ -87,10 +87,10 @@ public class CallbackServlet extends HttpServlet {
 					msg = "{\"errcode\":1,\"errmsg\":\"系统维护中\"}";
 				message.setContent(msg);
 				message.setContentType("application/json");
-				String[] ids=new String[]{Constants.LOGIN_NAME};
-				String body = "测试下推送";
-				Message m = new TextMessage(body);
-				oa.sendOcuMessageToUsers(ids, m, ocuId, ocuSecret);
+//				String[] ids=new String[]{Constants.LOGIN_NAME};
+//				String body = "测试下推送";
+//				Message m = new TextMessage(body);
+//				oa.sendOcuMessageToUsers(ids, m, ocuId, ocuSecret);
 			} else if ("unsubscribe".equals(content)) {
 				String msg = "{\"errcode\":0,\"errmsg\":\"成功取消订阅\"}";
 				message.setContent(msg);
@@ -128,11 +128,11 @@ public class CallbackServlet extends HttpServlet {
 					response.setHeader(key, message.getHeaders().get(key));
 				}
 			}
-//			response.setCharacterEncoding("utf-8");
-//			response.setContentType(message.getContentType());
-//			response.getWriter().write(message.getContent());
-//			response.getWriter().flush();
-//			response.getWriter().close();
+			response.setCharacterEncoding("utf-8");
+			response.setContentType(message.getContentType());
+			response.getWriter().write(message.getContent());
+			response.getWriter().flush();
+			response.getWriter().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
