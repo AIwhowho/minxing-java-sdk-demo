@@ -208,7 +208,15 @@ public class TestAppSyncAccount {
 
 		try {
 
-			
+			/**
+			 * 为用户新增一个兼职部门
+			 * @param userLoginName 要处理的用户loginname
+			 * @param departmentCode 兼职部门的部门编码
+			 * @param displayOrder 用户在兼职部门的显示顺序，必须是一个整数，例如“20”,如果不是数字，则被设置为0。
+			 * @param title 兼职部门的职务
+			 * @return true 如果创建成功
+			 * @throws ApiErrorException
+			 */
 			account.addUserSecondDepartment("zhangsan","001001","","开发经理");
 
 		} catch (ApiErrorException e) {
