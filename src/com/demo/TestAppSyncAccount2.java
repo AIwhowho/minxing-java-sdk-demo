@@ -29,7 +29,7 @@ public class TestAppSyncAccount2 {
 //		System.out.println(error.getErrorMessage());
 		Department de = new Department();
 		de.setNetwork_name("jitou.com");
-		de.setShort_name("机头");
+		de.setShortName("机头");
 		de.setDept_code("abcd");
 		de.setRoot(true);
 		

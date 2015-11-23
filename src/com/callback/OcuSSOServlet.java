@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.minxing.client.app.AppAccount;
+import com.minxing.client.http.Response;
 import com.minxing.client.json.JSONObject;
 import com.minxing.client.organization.Department;
 import com.minxing.client.organization.User;
@@ -36,7 +37,6 @@ public class OcuSSOServlet extends HttpServlet {
 		try{
 			String access_token="59p68NMCUftkkeiXAz9Pj4wpjB7umUSzFyPbQUHsxcHPibuf";
 			String ocu_id="80917071fe3d6ef27d3e0f73fa5e1580";
-			String ocu_secret="5deb243248901b0d0f8275ddf6462f7e";
 			AppAccount oa=AppAccount.loginByAccessToken("http://intg.dehuinet.com:8060", access_token);
 			String mx_sso_token =  request.getParameter("mx_sso_token");;
 			if(mx_sso_token!=null){
@@ -47,7 +47,7 @@ public class OcuSSOServlet extends HttpServlet {
 			}else{
 				System.out.println("验证签名信息失败");
 			}
-			JSONObject o = oa.get("/api/v1/users/current", null);
+			Response o = oa.get("/api/v1/users/current", null);
 			
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter pw = response.getWriter();

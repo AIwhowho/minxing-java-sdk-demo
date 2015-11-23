@@ -10,10 +10,10 @@ import com.minxing.client.model.MxException;
 
 public class TestGetDepartmentByApi {
 	public static void main(String[] args) {
-		JSONObject root = getDepartmentsUsers(-1,-1,0,20);
+		getDepartmentsUsers(-1,-1,0,20);
 //		JSONObject subdepartment = getDepartmentsUsers(-1,-1,4,20);
 	}
-	private static JSONObject getDepartmentsUsers(int last_dept_id, int last_user_id, int parent_id,int limit){
+	private static void getDepartmentsUsers(int last_dept_id, int last_user_id, int parent_id,int limit){
 		
 		AppAccount account = AppAccount.loginByAccessToken("http://localhost:3000",
 				"cGTsJXPAJeEwUEXvt2SvJ--0q7cPunUqvc4AMKb8i6y-PUti");
@@ -33,14 +33,12 @@ public class TestGetDepartmentByApi {
 			params.put("all_dept", "true");
 		}
 		params.put("limit", limit+"");
-		JSONObject result=null;
 		
 		try {
-			result = account.get("/api/v1/departments.json",params);
+			account.get("/api/v1/departments.json",params);
 		} catch (MxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return result;
 	}
 }

@@ -71,7 +71,7 @@ MX.onGraphLoad(
 	         },
 	         height:"400",
 	         width:"400",
-	         type:"conversations_graph",   //conversations_graph 即时通讯；  graph:工作圈
+	         type:"conversations",   //conversations 即时通讯；  conversations_graph:工作圈
 	         config:{
 	               promptText: "跟你同事说点啥"
 	         }
@@ -80,8 +80,8 @@ MX.onGraphLoad(
 );
 
 MX.on("fresh_message",function(num){
-	console.log("fresh_message 11111111111111111");
-	console.log(num);
+	//console.log("fresh_message 11111111111111111");
+	//console.log(num);
 	   //num 这是当前消息流中的未读消息树
 	});
 	 

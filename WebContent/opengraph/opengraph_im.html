@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>待办页面</title>
+<!-- src中的服务器修改为自己敏行的地址；data-network对应社区的信息 -->
+<script src="http://192.168.100.99:3000/connect/mx_loader.js"
+	data-client-id="3" data-network="tianjin"></script>
+</head>
+<body>
+	<h2>直接联系某人，进行即时通讯的方式</h2>
+	<div>
+		<p>
+			<!-- 该标签是必须的，内容为需要交流的人员的loginname -->
+			<span data-mxim="1408"></span>
+		</p>
+		<p>6年前，彼时的天猫刚刚立项为“淘宝商城”，试水B2C，白天猫之外的独立电商参与其中。</p>
+	</div>
+	<script>
+		MX.onGraphLoad(function(mc) {
+			mc.initIM({
+				width : "300px",
+				height : "400px",
+				type : "conversation_graph"
+			})
+		})
+	</script>
+
+</body>
+</html>

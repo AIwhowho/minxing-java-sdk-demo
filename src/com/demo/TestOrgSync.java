@@ -44,7 +44,7 @@ public class TestOrgSync {
 
 		Department d = new Department();
 		d.setDept_code("001004");
-		d.setShort_name("客户部");
+		d.setShortName("客户部");
 		d.setNetwork_name(network_name);
 
 		try {
