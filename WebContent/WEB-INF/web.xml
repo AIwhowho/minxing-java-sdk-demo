@@ -36,6 +36,15 @@
     <url-pattern>/html5sso</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <servlet-name>test</servlet-name>
+    <servlet-class>com.callback.Test</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>test</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

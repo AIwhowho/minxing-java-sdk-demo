@@ -5,25 +5,47 @@
  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
 <title>待办页面</title>
 <!-- src中的服务器修改为自己敏行的地址；data-network对应社区的信息 -->
-<script src="https://www.minxing365.com/connect/mx_loader.js"
-	data-client-id="3" data-network="dehuinet.com"></script>
+<script src="http://test1.dehuinet.com:8031/connect/mx_loader.js"
+	data-client-id="3" data-network="dehuinet"></script>
 </head>
 <body>
 	<h2>直接联系某人，进行即时通讯的方式</h2>
 	<div>
 		<p>
 			<!-- 该标签是必须的，内容为需要交流的人员的loginname -->
-			<span data-mxim="liuhua@dehuinet.com"></span>
+			<span data-mxim="hida"></span>
 		</p>
 		<p>6年前，彼时的天猫刚刚立项为“淘宝商城”，试水B2C，白天猫之外的独立电商参与其中。</p>
 	</div>
 	<script>
-	//MX.onGraphLoad(function(mc) {
+/* 	
 		MX.initIM({
 			width : "300",
 			height : "400"
 		})
-	//})
+	*/
+	
+var  ocuId = "f0594501ba8388ef993ae78c48c7715b";
+var  thirdurl = "https://www.baidu.com";
+var  imageurl = "https://www.baidu.com/img/bdlogo.png";
+//所有关于openGrap的请求，都需要在该回调中运行
+MX.onGraphLoad({
+		    objectProperties: {
+		        url: thirdurl+"?type=im",
+		        type: "file",
+		        title: "敏行培训对象im",
+		        image: imageurl
+		    },
+		    ocuId: ocuId
+		},
+		function(mc){
+		     MX.initIM({
+		        ssoKey:"login_name",
+		        width:"300",
+		        height:"400"
+	     })
+ })
+
 	</script>
 
 </body>
