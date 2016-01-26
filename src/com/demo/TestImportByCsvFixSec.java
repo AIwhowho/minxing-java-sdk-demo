@@ -9,7 +9,7 @@ import com.minxing.client.app.AppAccount;
 import com.minxing.client.organization.Department;
 import com.minxing.client.organization.User;
 
-public class TestImportByCsv {
+public class TestImportByCsvFixSec {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -45,20 +45,31 @@ public class TestImportByCsv {
 					depart_dept_code.add(d.getDept_code());
 				}
 				count++;
-				System.out.println( count + "-----all-user-info==" + csvList.get(row)[0]+"    " +
+				System.out.println( count + "--------all-user-info==" + csvList.get(row)[0]+"    " +
 						csvList.get(row)[10] +"    " + csvList.get(row)[11] +"    " +
 						csvList.get(row)[3]);
-				if (!depart_dept_code.contains(csvList.get(row)[10])) {
+//				if (!depart_dept_code.contains(csvList.get(row)[10])) {
+//					/*
+//					 *  userLoginName  departmentCode  displayOrder  title 
+//					 */
+//					System.out.println("insert-user==" + csvList.get(row)[0]+"    " +
+//							csvList.get(row)[10] +"    " + csvList.get(row)[11] +"    " +
+//							csvList.get(row)[3]);
+//					account.addUserDepartment(csvList.get(row)[0],
+//							csvList.get(row)[10], csvList.get(row)[11],
+//							csvList.get(row)[3]);
+//				}
+//				if (!depart_dept_code.contains(csvList.get(row)[10])) {
 					/*
 					 *  userLoginName  departmentCode  displayOrder  title 
 					 */
-					System.out.println("insert-user==" + csvList.get(row)[0]+"    " +
+					System.out.println("delete-user-sec==" + csvList.get(row)[0]+"    " +
 							csvList.get(row)[10] +"    " + csvList.get(row)[11] +"    " +
 							csvList.get(row)[3]);
-					account.addUserDepartment(csvList.get(row)[0],
-							csvList.get(row)[10], csvList.get(row)[11],
-							csvList.get(row)[3]);
-				}
+					account.removeUserDepartment(csvList.get(row)[0],
+							csvList.get(row)[10]);
+//					account.addUserDepartment(csvList.get(row)[0],csvList.get(row)[10], csvList.get(row)[11],csvList.get(row)[3]);
+//				}
 
 			}
 
